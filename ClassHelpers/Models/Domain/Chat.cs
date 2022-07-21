@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,6 +22,5 @@ namespace ClassHelpers.Models.Domain
         public virtual Account Receiver { get; set; }
 
         public virtual List<Message> Messages { get; set; }
-        
     }
 }

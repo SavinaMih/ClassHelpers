@@ -1,6 +1,6 @@
 ﻿namespace ClassHelpers.Models.Business_Logic
 {
-    public class ContactLogic
+    public class GroupLogic
     {
     }
 }

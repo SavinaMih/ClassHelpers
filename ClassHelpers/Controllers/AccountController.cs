@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using ClassHelpers.Repositories;
 using ClassHelpers.Models.Domain;
 using ClassHelpers.Models.InputModels;
 using ClassHelpers.Models.BusinessLogic;
-using System.Web.Security;
-using Microsoft.AspNetCore.Mvc;
+
+
 
 
 
@@ -38,9 +39,9 @@ namespace ClassHelpers.Controllers
                 Account account = accountRepository.GetAccount(model.MobileNumber, password);
                 if (account != null)
                 {
-                    FormsAuthentication.SetAuthCookie(account.MobileNumber, false);
-                    Session["loggedin_account"] = account;
-                    return RedirectToAction("Index", "Contact");
+                    //FormsAuthentication.SetAuthCookie(account.MobileNumber, false);
+                   // Session["loggedin_account"] = account;
+                   // return RedirectToAction("Index", "Contact");
                 }
                 else ModelState.AddModelError("Login_error", "The mobile number or password provided is incorrect.");
             }
@@ -76,18 +77,18 @@ namespace ClassHelpers.Controllers
 
                    
                     contactRepository.AddOwnerAccountsToContacts(account.MobileNumber, account.AccountId);
-                    return RedirectToAction("Login", "Account");
+                   // return RedirectToAction("Login", "Account");
                 }
                 else ModelState.AddModelError("", "This mobile number already has an account. Try logging in with it!");
             }
             return View(model); 
         }
 
-        public ActionResult LogOut()
-        {
-            FormsAuthentication.SignOut();
-            Session.Abandon(); 
-            return RedirectToAction("Login", "Account");
+        //public ActionResult LogOut()
+        //{
+            //FormsAuthentication.SignOut();
+            //Session.Abandon(); 
+            //return.RedirectToAction("Login", "Account");
         }
     }
-}
+//}

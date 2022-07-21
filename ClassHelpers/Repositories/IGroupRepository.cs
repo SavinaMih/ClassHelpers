@@ -20,3 +20,4 @@ namespace ClassHelpers.Repositories
         void RemoveGroupMessage(GroupMessage message);
         Contact GetGroupOwnerContact(int groupOwnerId, int accountId);
     }
+}
