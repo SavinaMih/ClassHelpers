@@ -33,5 +33,10 @@ namespace ClassHelpers.Controllers
         {
             return View();
         }
+
+        public IActionResult PrivateMessaging()
+        {
+            return View();
+        }
     }
 }
