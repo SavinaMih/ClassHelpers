@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using ClassHelpers.Models.DBC;
 using ClassHelpers.Models.Domain;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClassHelpers.Repositories
 {
