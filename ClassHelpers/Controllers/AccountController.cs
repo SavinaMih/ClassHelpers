@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 using ClassHelpers.Repositories;
 using ClassHelpers.Models.Domain;
 using ClassHelpers.Models.InputModels;
 using ClassHelpers.Models.BusinessLogic;
-
-
-
-
+using Microsoft.AspNetCore.Mvc;
 
 namespace ClassHelpers.Controllers
 {
