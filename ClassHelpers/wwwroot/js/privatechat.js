@@ -21,7 +21,7 @@ connection.start().then(function () {
 });
 
 document.getElementById("sendButton").addEventListener("click", function (event) {
-    var name = document.getElementById("nameInput").value;
+    var name = document.getElementById("userName").innerHTML;
     var user = document.getElementById("userInput").value;
     var message = document.getElementById("messageInput").value;
     connection.invoke("SendPrivateMessage", name, user, message).catch(function (err) {
