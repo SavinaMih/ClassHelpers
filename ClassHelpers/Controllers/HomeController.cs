@@ -1,4 +1,5 @@
 ﻿using ClassHelpers.Models;
+using ClassHelpers.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -23,18 +24,6 @@ namespace ClassHelpers.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        [Authorize]
-        public IActionResult Chatroom()
-        {
-            return View();
-        }
-
-        [Authorize]
-        public IActionResult PrivateMessaging()
-        {
-            return View();
         }
     }
 }

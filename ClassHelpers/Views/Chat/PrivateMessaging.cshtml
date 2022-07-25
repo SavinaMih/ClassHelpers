@@ -2,6 +2,8 @@
     ViewData["Title"] = "Private Chatroom";
 }
 
+@model List<string>
+
 <div class="container">
     <div class="row">&nbsp;</div>
     <div class="row">
@@ -10,7 +12,14 @@
     </div>
     <div class="row">
         <div class="col-2">To User:</div>
-        <div class="col-4"><input type="text" id="userInput" /></div>
+        <div class="col-4">
+            <select id="userInput">
+                @foreach (string u in Model.Where(u => u != User.Identity.Name))
+                {
+                    <option value="@u">@u</option>
+                }
+            </select>
+        </div>
     </div>
     <div class="row">
         <div class="col-2">Message</div>
