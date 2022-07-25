@@ -3,6 +3,7 @@ using ClassHelpers.Hubs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ClassHelpersContextConnection") ?? throw new InvalidOperationException("Connection string 'ClassHelpersContextConnection' not found.");
 
