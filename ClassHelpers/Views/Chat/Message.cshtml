@@ -1,12 +1,20 @@
 ﻿@{
-    ViewData["Title"] = "Public Chatroom";
+    ViewData["Title"] = "Messaging " + @Model;
 }
+
+@model string
 
 <div class="container">
     <div class="row">&nbsp;</div>
     <div class="row">
         <div class="col-2">Sending as: </div>
         <div class="col-4"><b id="userName">@User.Identity.Name</b></div>
+    </div>
+    <div class="row">
+        <div class="col-2">You are chatting with:</div>
+        <div class="col-4">
+            <div class="col-4"><b id="userInput">@Model</b></div>
+        </div>
     </div>
     <div class="row">
         <div class="col-2">Message</div>
@@ -31,5 +39,4 @@
 </div>
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/publicchat.js"></script>
-<script src="~/js/listen.js"></script>
+<script src="~/js/privatechat.js"></script>

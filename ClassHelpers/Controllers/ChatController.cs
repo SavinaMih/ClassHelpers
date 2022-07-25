@@ -29,5 +29,10 @@ namespace ClassHelpers.Controllers
             List<string> accounts = accountRepository.GetAllAccounts().Select(a => a.UserName).ToList();
             return View(accounts);
         }
+
+        public IActionResult Message(string user)
+        {
+            return View("Message", user);
+        }
     }
 }

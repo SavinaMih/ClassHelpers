@@ -1,47 +1,16 @@
 ﻿@{
-    ViewData["Title"] = "Private Chatroom";
+    ViewData["Title"] = "Private Chat";
 }
 
 @model List<string>
 
-<div class="container">
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-2">Sending as: </div>
-        <div class="col-4"><b id="userName">@User.Identity.Name</b></div>
-    </div>
-    <div class="row">
-        <div class="col-2">To User:</div>
-        <div class="col-4">
-            <select id="userInput">
-                @foreach (string u in Model.Where(u => u != User.Identity.Name))
-                {
-                    <option value="@u">@u</option>
-                }
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-2">Message</div>
-        <div class="col-4"><input type="text" id="messageInput" /></div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="sendButton" value="Send Message" />
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <hr />
-    </div>
-</div>
-<div class="row">
-    <div class="col-6">
-        <ul id="messagesList"></ul>
-    </div>
-</div>
+<h1>Choose a contact</h1>
+<br />
+
+@foreach (string u in Model.Where(u => u != User.Identity.Name))
+{
+    <li>@Html.ActionLink(u, "Message", "Chat", new { user = u })</li>
+}
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/privatechat.js"></script>
+<script src="~/js/listen.js"></script>
