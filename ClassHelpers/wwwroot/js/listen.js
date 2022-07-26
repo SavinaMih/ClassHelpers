@@ -10,7 +10,19 @@ var toastLink = document.getElementById('actionLink');
 connection.on("PrivateMessage", function (user, message) {
     toastSender.innerHTML = user;
     toastContent.innerHTML = message;
-    toastLink.href = toastLink.href + `?user=${user}`;
+    toastLink.textContent = "Go to conversation";
+    toastLink.href = `/Chat/Message?user=${user}`;
+    toastLink.removeAttribute("download");
+    var toast = new bootstrap.Toast(toastNotification);
+    toast.show();
+});
+
+connection.on("PrivateFileMessage", function (user, filename, base64) {
+    toastSender.innerHTML = user;
+    toastContent.innerHTML = "Received file: " + filename;
+    toastLink.textContent = "Download file";
+    toastLink.href = base64;
+    toastLink.download = filename;
     var toast = new bootstrap.Toast(toastNotification);
     toast.show();
 });

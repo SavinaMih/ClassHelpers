@@ -21,5 +21,10 @@ namespace ClassHelpers.Hubs
         {
             await Clients.User(userManager.FindByNameAsync(recipient).Result.Id).PrivateMessage(sender, message);
         }
+
+        public async Task SendPrivateFileMessage(string sender, string recipient, string filename, string base64)
+        {
+            await Clients.User(userManager.FindByNameAsync(recipient).Result.Id).PrivateFileMessage(sender, filename, base64);
+        }
     }
 }
