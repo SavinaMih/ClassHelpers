@@ -1,5 +1,6 @@
 using ClassHelpers.Data;
 using ClassHelpers.Hubs;
+using ClassHelpers.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
 var app = builder.Build();
 

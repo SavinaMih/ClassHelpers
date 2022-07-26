@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Private Chat";
+}
+
+@model List<string>
+
+<h1>Choose a contact</h1>
+<br />
+
+@foreach (string u in Model.Where(u => u != User.Identity.Name))
+{
+    <li>@Html.ActionLink(u, "Message", "Chat", new { user = u })</li>
+}
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/listen.js"></script>
