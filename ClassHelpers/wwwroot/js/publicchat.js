@@ -11,6 +11,19 @@ connection.on("PublicMessage", function (user, message) {
     li.textContent = `${user} said: ${message}`;
 });
 
+connection.on("PublicFileMessage", function (user, filename, base64) {
+    if (user != document.getElementById("userName").innerHTML) {
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.textContent = "Download";
+        a.href = base64;
+        a.download = filename;
+        li.textContent = `${user} sent ${filename}\n`;
+        li.appendChild(a);
+        document.getElementById("messagesList").appendChild(li);
+    }
+});
+
 connection.on("UserJoinedChatroom", function (user) {
     var li = document.createElement("li");
     document.getElementById("messagesList").appendChild(li);
@@ -44,4 +57,23 @@ document.getElementById("sendButton").addEventListener("click", function (event)
         return console.error(err.toString());
     });
     event.preventDefault();
+});
+
+document.getElementById("sendFileButton").addEventListener("click", function (event) {
+    var user = document.getElementById("userName").innerHTML;
+    var file = document.getElementById("fileInput").files[0];
+    var fileName = file.name;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        connection.invoke("SendPublicFileMessage", user, fileName, reader.result).catch(function (err) {
+            return console.error(err.toString());
+        });
+    }
+
+    event.preventDefault();
+    var li = document.createElement("li");
+    document.getElementById("messagesList").appendChild(li);
+    li.textContent = `You sent ${fileName}`;
 });
