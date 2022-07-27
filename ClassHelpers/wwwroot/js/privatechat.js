@@ -17,7 +17,6 @@ connection.on("PrivateMessage", function (user, message) {
             <div class="card w-100">
               <div class="card-header d-flex justify-content-between p-3">
                 <p class="fw-bold mb-0">${user}</p>
-                <p class="text-muted small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
               </div>
               <div class="card-body">
                 <p class="mb-0">
@@ -45,14 +44,21 @@ connection.on("PrivateMessage", function (user, message) {
 
 connection.on("PrivateFileMessage", function (user, filename, base64) {
     if (user == document.getElementById("userInput").innerHTML) {
+        const html = `<li class="d-flex justify-content-between mb-4">
+            <div class="card w-100">
+                <div class="card-header d-flex justify-content-between p-3">
+                    <p class="fw-bold mb-0">File message</p>
+                </div>
+                <div class="card-body">
+                    <p class="mb-0">
+                        ${user} sent ${filename}. <a href=${base64} download=${filename}>Download</a>
+                    </p>
+                </div>
+            </div>
+        </li>`;
         var li = document.createElement("li");
-        var a = document.createElement("a");
-        a.textContent = "Download";
-        a.href = base64;
-        a.download = filename;
-        li.textContent = `${user} sent ${filename}\n`;
-        li.appendChild(a);
-        document.getElementById("messagesList").appendChild(li);
+        li.innerHTML = html;
+        document.getElementById("messageList").appendChild(li);
     }
     else {
         toastSender.innerHTML = user;
@@ -86,7 +92,6 @@ document.getElementById("sendButton").addEventListener("click", function (event)
             <div class="card w-100">
                 <div class="card-header d-flex justify-content-between p-3">
                     <p class="fw-bold mb-0">${name}</p>
-                    <p class="text-muted small mb-0"><i class="far fa-clock"></i> 12 mins ago</p>
                 </div>
                 <div class="card-body">
                     <p class="mb-0">
@@ -115,7 +120,21 @@ document.getElementById("sendFileButton").addEventListener("click", function (ev
     }
 
     event.preventDefault();
+    const html = `<li class="d-flex justify-content-between mb-4">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+            class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+            <div class="card w-100">
+                <div class="card-header d-flex justify-content-between p-3">
+                    <p class="fw-bold mb-0">${name}</p>
+                </div>
+                <div class="card-body">
+                    <p class="mb-0">
+                        You sent ${fileName}
+                    </p>
+                </div>
+            </div>
+    </li>`;
     var li = document.createElement("li");
-    document.getElementById("messagesList").appendChild(li);
-    li.textContent = `You sent ${fileName}`;
+    li.innerHTML = html;
+    document.getElementById("messageList").appendChild(li);
 });
