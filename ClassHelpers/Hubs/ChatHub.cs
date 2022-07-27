@@ -21,5 +21,25 @@ namespace ClassHelpers.Hubs
         {
             await Clients.User(userManager.FindByNameAsync(recipient).Result.Id).PrivateMessage(sender, message);
         }
+
+        public async Task SendPrivateFileMessage(string sender, string recipient, string filename, string base64)
+        {
+            await Clients.User(userManager.FindByNameAsync(recipient).Result.Id).PrivateFileMessage(sender, filename, base64);
+        }
+
+        public async Task SendPublicFileMessage(string sender, string filename, string base64)
+        {
+            await Clients.All.PublicFileMessage(sender, filename, base64);
+        }
+
+        public async Task JoinChatroom(string user)
+        {
+            await Clients.All.UserJoinedChatroom(user);
+        }
+
+        public async Task LeaveChatroom(string user)
+        {
+            await Clients.All.UserLeftChatroom(user);
+        }
     }
 }
