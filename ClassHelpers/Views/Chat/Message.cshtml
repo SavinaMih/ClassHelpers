@@ -5,7 +5,39 @@
 @model string
 
 <section style="background-color: #eee;">
-      
+        <div class="container py-5">
+
+    <div class="row">
+
+      <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
+
+        <h5 class="font-weight-bold mb-3 text-center text-lg-start">Members</h5>
+
+        <div class="card">
+          <div class="card-body">
+
+            <ul class="list-unstyled mb-0">
+                @foreach(string u in Model.Where(u=>u!=User.Identity.Name))
+                {
+              <li class="p-2 border-bottom">
+                <a href="#!" class="d-flex justify-content-between">
+                  <div class="d-flex flex-row">
+                    <div class="pt-1">
+                      <p class="fw-bold mb-0">@Html.ActionLink(u, "Message", "Chat", new { user = u })</p>
+                    </div>
+                  </div>
+                  <div class="pt-1">
+                    <p class="small text-muted mb-1">Yesterday</p>
+                  </div>
+                </a>
+              </li>
+              }
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
       <div class="col-md-6 col-lg-7 col-xl-8">
 
         <ul class="list-unstyled">
