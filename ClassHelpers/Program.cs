@@ -15,7 +15,10 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSignalR();
+builder.Services.AddSignalR(hubOptions =>
+{
+    hubOptions.MaximumReceiveMessageSize = 1500000;
+});
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
 var app = builder.Build();
@@ -40,6 +43,10 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
-app.MapHub<ChatHub>("/chathub");
+app.MapHub<ChatHub>("/chathub", options =>
+{
+    options.ApplicationMaxBufferSize = 1500000;
+    options.TransportMaxBufferSize = 1500000;
+});
 
 app.Run();

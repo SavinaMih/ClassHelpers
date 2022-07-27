@@ -4,6 +4,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chathub").build();
 
 //Disable the send button until connection is established.
 document.getElementById("sendButton").disabled = true;
+document.getElementById("sendFileButton").disabled = true;
 
 connection.on("PublicMessage", function (user, message) {
     var li = document.createElement("li");
@@ -38,6 +39,7 @@ connection.on("UserLeftChatroom", function (user) {
 
 connection.start().then(function () {
     document.getElementById("sendButton").disabled = false;
+    document.getElementById("sendFileButton").disabled = false;
     connection.invoke("JoinChatroom", document.getElementById("userName").innerHTML);
 }).catch(function (err) {
     return console.error(err.toString());
