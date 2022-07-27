@@ -1,5 +1,6 @@
 ﻿using ClassHelpers.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClassHelpers.Controllers
@@ -26,13 +27,16 @@ namespace ClassHelpers.Controllers
 
         public IActionResult PrivateMessaging()
         {
-            List<string> accounts = accountRepository.GetAllAccounts().Select(a => a.UserName).ToList();
+            List<IdentityUser> accounts = accountRepository.GetAllAccounts().ToList();
             return View(accounts);
         }
 
         public IActionResult Message(string user)
         {
-            return View("Message", user);
+            List<IdentityUser> accounts = accountRepository.GetAllAccounts().ToList();
+            KeyValuePair<List<IdentityUser>, string> model = new KeyValuePair<List<IdentityUser>, string>(accounts, user);
+
+            return View("Message", model);
         }
     }
 }

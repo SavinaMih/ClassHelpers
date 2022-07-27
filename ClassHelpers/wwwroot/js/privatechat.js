@@ -12,9 +12,24 @@ document.getElementById("sendButton").disabled = true;
 
 connection.on("PrivateMessage", function (user, message) {
     if (user == document.getElementById("userInput").innerHTML) {
+        const html = `<li class="d-flex justify-content-between mb-4">
+            <div class="card w-100">
+              <div class="card-header d-flex justify-content-between p-3">
+                <p class="fw-bold mb-0">${user}</p>
+                <p class="text-muted small mb-0"><i class="far fa-clock"></i> 13 mins ago</p>
+              </div>
+              <div class="card-body">
+                <p class="mb-0">
+                  ${message}
+                </p>
+              </div>
+            </div>
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
+              class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+          </li>`;
         var li = document.createElement("li");
-        document.getElementById("messagesList").appendChild(li);
-        li.textContent = `${user} said: ${message}`;
+        li.innerHTML = html;
+        document.getElementById("messageList").appendChild(li);
     }
     else {
         toastSender.innerHTML = user;
@@ -39,8 +54,23 @@ document.getElementById("sendButton").addEventListener("click", function (event)
         return console.error(err.toString());
     });
     event.preventDefault();
+    const html = `<li class="d-flex justify-content-between mb-4">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+            class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+            <div class="card w-100">
+                <div class="card-header d-flex justify-content-between p-3">
+                    <p class="fw-bold mb-0">${name}</p>
+                    <p class="text-muted small mb-0"><i class="far fa-clock"></i> 12 mins ago</p>
+                </div>
+                <div class="card-body">
+                    <p class="mb-0">
+                        ${message}
+                    </p>
+                </div>
+            </div>
+    </li>`;
     var li = document.createElement("li");
-    document.getElementById("messagesList").appendChild(li);
-    li.textContent = `You said: ${message}`;
+    li.innerHTML = html;
+    document.getElementById("messageList").appendChild(li);
 });
 
