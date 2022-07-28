@@ -24,7 +24,7 @@ connection.on("PrivateMessage", function (user, message) {
                 </p>
               </div>
             </div>
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="avatar"
               class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
           </li>`;
         var li = document.createElement("li");
@@ -45,6 +45,8 @@ connection.on("PrivateMessage", function (user, message) {
 connection.on("PrivateFileMessage", function (user, filename, base64) {
     if (user == document.getElementById("userInput").innerHTML) {
         const html = `<li class="d-flex justify-content-between mb-4">
+            <img src="https://cdn-icons-png.flaticon.com/512/1643/1643239.png" alt="avatar"
+            class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
             <div class="card w-100">
                 <div class="card-header d-flex justify-content-between p-3">
                     <p class="fw-bold mb-0">File message</p>
@@ -87,7 +89,7 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     });
     event.preventDefault();
     const html = `<li class="d-flex justify-content-between mb-4">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="avatar"
             class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
             <div class="card w-100">
                 <div class="card-header d-flex justify-content-between p-3">
@@ -121,7 +123,7 @@ document.getElementById("sendFileButton").addEventListener("click", function (ev
 
     event.preventDefault();
     const html = `<li class="d-flex justify-content-between mb-4">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="avatar"
             class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
             <div class="card w-100">
                 <div class="card-header d-flex justify-content-between p-3">
