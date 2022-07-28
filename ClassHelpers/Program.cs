@@ -18,8 +18,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAuthentication()
 
     .AddFacebook(options =>
-    { options.AppId = "test";
-      options.AppSecret = "test";
+    { options.AppId = "382917260579023";
+      options.AppSecret = "aa56007be5587b46fe2699af9b0049ce";
 }) 
     .AddGoogle(options =>
     {
