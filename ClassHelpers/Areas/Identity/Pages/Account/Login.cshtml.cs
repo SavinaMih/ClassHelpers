@@ -114,7 +114,17 @@ namespace ClassHelpers.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var userName = _userManager.GetAccountByMail(Input.Email).UserName;
+                string userName;
+                try
+                {
+                    userName = _userManager.GetAccountByMail(Input.Email).UserName;
+                }
+                catch (NullReferenceException)
+                {
+                    ModelState.AddModelError(string.Empty, "User does not exist.");
+                    return Page();
+
+                }
                 var result = await _signInManager.PasswordSignInAsync(userName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
