@@ -17,6 +17,11 @@ namespace ClassHelpers.Controllers
 
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Welcome");
+            }
+
             return View();
         }
 
@@ -24,6 +29,12 @@ namespace ClassHelpers.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [Authorize]
+        public IActionResult Welcome()
+        {
+            return View();
         }
     }
 }

@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 class="display-4">Welcome, @User.Identity.Name!</h1>
+<hr />
+<div class="card-group">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Enter public chatroom</h5>
+            <p class="card-text">Communicate with other users on the site.</p>
+            @Html.ActionLink("Go", "Chatroom", "Chat")
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Chat privately</h5>
+            <p class="card-text">Exchange messages privately with a contact.</p>
+            @Html.ActionLink("Go", "PrivateMessaging", "Chat")
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">View resources</h5>
+            <p class="card-text">View or upload resources to the site's database.</p>
+            @Html.ActionLink("Go", "Index", "Database")
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Manage your account</h5>
+            <p class="card-text">Change your username, details, delete your account and data.</p>
+            <a href="/Identity/Account/Manage">Go</a>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/listen.js"></script>
