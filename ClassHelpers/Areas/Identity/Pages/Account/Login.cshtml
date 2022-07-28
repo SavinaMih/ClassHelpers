@@ -64,20 +64,10 @@
                     <p>
                         @foreach (var provider in loginProviders)
                         {
-                            if (provider.Name=="Facebook")
-                            {
-                                <button type="submit" class="btn btn-primary disabled" name="provider" value="@provider.Name"
+                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name"
                                 title="Log in using your @provider.Name Account">
-                                    @provider.Name (Still in development)
-                                </button>
-                            }
-                            else
-                            {
-                                <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name"
-                                title="Log in using your @provider.Name Account">
-                                    @provider.Name
-                                </button>
-                            }
+                                @provider.Name
+                            </button>
                         }
                     </p>
                 </div>
