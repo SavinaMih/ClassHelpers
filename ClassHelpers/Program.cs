@@ -15,6 +15,18 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication()
+
+    .AddFacebook(options =>
+    { options.AppId = "test";
+      options.AppSecret = "test";
+}) 
+    .AddGoogle(options =>
+    {
+        options.ClientId = "805479506263-2sfkp8tj2tqlmro6pohoruqg8uv86fo8.apps.googleusercontent.com";
+        options.ClientSecret = "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";
+    });
+
 builder.Services.AddSignalR(hubOptions =>
 {
     hubOptions.MaximumReceiveMessageSize = 1500000;
