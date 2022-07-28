@@ -56,16 +56,28 @@
         var loginProviders = schemes.ToList();
     }
 
-    <div class ="col-md-4">
+    <div class="col-md-4">
         <section>
             <h4>Use another service to log in</h4>
-            <form asp-page="./ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method ="post" role="form">
+            <form asp-page="./ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" role="form">
                 <div>
                     <p>
-                        @foreach(var provider in loginProviders)
+                        @foreach (var provider in loginProviders)
                         {
-                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name"
-                            title="Log in using your @provider.Name Account">@provider.Name</button>
+                            if (provider.Name=="Facebook")
+                            {
+                                <button type="submit" class="btn btn-primary disabled" name="provider" value="@provider.Name"
+                                title="Log in using your @provider.Name Account">
+                                    @provider.Name (Still in development)
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name"
+                                title="Log in using your @provider.Name Account">
+                                    @provider.Name
+                                </button>
+                            }
                         }
                     </p>
                 </div>
