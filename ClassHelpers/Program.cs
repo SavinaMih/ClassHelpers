@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("ClassHelpersContextConnection") ?? throw new InvalidOperationException("Connection string 'ClassHelpersContextConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("ClassHelpersContextLocalDBConnection") ?? throw new InvalidOperationException("Connection string 'ClassHelpersContextConnection' not found.");
 
 builder.Services.AddDbContext<ClassHelpersContext>(options =>
     options.UseSqlServer(connectionString));
